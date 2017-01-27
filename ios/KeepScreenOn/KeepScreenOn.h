@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <React/RCTBridgeModule.h>
-#import <React/RCTView.h>
+#import "RCTBridgeModule.h"
+#import "RCTView.h"
 
 @interface KeepScreenOn : NSObject <RCTBridgeModule>
 
