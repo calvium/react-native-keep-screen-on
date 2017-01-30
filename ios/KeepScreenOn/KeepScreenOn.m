@@ -50,7 +50,8 @@
 @interface KeepScreenOn() {
     CGFloat _originalBrightness;
     CGFloat _dimmedBrightness;
-    BOOL _shouldAutoDim;
+    BOOL _shouldAutoDim; // is autoDim currently enabled
+    BOOL _autoDimWasEnabled; // was autoDim enabled when the app was last active
     CGFloat _dimTimeout;
     UIGestureRecognizer *_gestureRecognizer;
 }
@@ -66,6 +67,7 @@ RCT_EXPORT_MODULE();
     
     if (self) {
         _shouldAutoDim = NO;
+        _autoDimWasEnabled = NO;
 
         // defaults
         _dimTimeout = 5.0f;
@@ -205,5 +207,22 @@ RCT_EXPORT_METHOD(setDisableAutoDim)
         [self disableAutoDim];
     }];
 }
+
+RCT_EXPORT_METHOD(autoDimOnChangedAppState:(NSString *)appState)
+{
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^ {
+        if ([appState isEqualToString:@"inactive"]) {
+            _autoDimWasEnabled = _shouldAutoDim;
+            [self disableAutoDim];
+        } else if ([appState isEqualToString:@"active"]) {
+            _originalBrightness = [UIScreen mainScreen].brightness;
+
+            if (_autoDimWasEnabled) {
+                [self enableAutoDimWithTimeout:_dimTimeout brightness:_dimmedBrightness];
+            }
+        }
+    }];
+}
+
 
 @end
