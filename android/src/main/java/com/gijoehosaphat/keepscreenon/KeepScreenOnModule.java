@@ -45,4 +45,39 @@ public class KeepScreenOnModule extends ReactContextBaseJavaModule {
       }
     }
   }
+
+  @ReactMethod
+  public void setBrightness(float brightness) {
+    // NO-OP on Android for now
+  }
+
+  @ReactMethod
+  public void setOriginalBrightness(float brightness) {
+    // NO-OP on Android for now
+  }
+
+  @ReactMethod
+  public void getBrightness() {
+    // NO-OP on Android for now
+  }
+
+  @ReactMethod
+  public void getAutoDimEnabled() {
+    // NO-OP on Android for now
+  }
+
+  @ReactMethod
+  public void setEnableAutoDim(float timeout, float brightness) {
+    // NO-OP on Android for now
+  }
+
+  @ReactMethod
+  public void setDisableAutoDim() {
+    // NO-OP on Android for now
+  }
+
+  @ReactMethod
+  public void autoDimOnChangedAppState(String appState) {
+    // NO-OP on Android for now
+  }
 }
