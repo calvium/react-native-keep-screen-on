@@ -45,4 +45,25 @@ public class KeepScreenOnModule extends ReactContextBaseJavaModule {
       }
     }
   }
+
+  @ReactMethod
+  public void setCustomBrightness(float brightness) {
+    // NO-OP on Android for now
+  }
+
+  @ReactMethod
+  public void setOriginalBrightness(float brightness) {
+    // NO-OP on Android for now
+  }
+
+  @ReactMethod
+  public void getBrightness() {
+    // NO-OP on Android for now
+  }
+  
+  @ReactMethod
+  public void resetBrightness() {
+    // NO-OP on Android for now
+  }
+
 }
