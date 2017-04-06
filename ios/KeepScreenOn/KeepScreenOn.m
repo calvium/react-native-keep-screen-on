@@ -80,15 +80,9 @@ RCT_EXPORT_MODULE();
         newView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         
         [root addSubview:newView];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(brightnessDidChange:) name:UIScreenBrightnessDidChangeNotification object:nil];
     }
     
     return self;
-}
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 // get the Root React native View
@@ -99,11 +93,6 @@ RCT_EXPORT_MODULE();
     }
     
     return nil;
-}
-
-// event coming from system brightness settings
-- (void)brightnessDidChange: (NSNotification *)notification {
-    _originalBrightness = [UIScreen mainScreen].brightness;
 }
 
 // user tapped the screen
