@@ -7,6 +7,7 @@ import android.view.WindowManager;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.Callback;
 
 public class KeepScreenOnModule extends ReactContextBaseJavaModule {
 
@@ -56,14 +57,15 @@ public class KeepScreenOnModule extends ReactContextBaseJavaModule {
     // NO-OP on Android for now
   }
 
-  @ReactMethod
-  public void getBrightness() {
-    // NO-OP on Android for now
-  }
-  
-  @ReactMethod
-  public void resetBrightness() {
-    // NO-OP on Android for now
-  }
-
+    @ReactMethod
+    public void getBrightness(Callback callback) {
+        // NO-OP on Android for now
+        callback.invoke(1)
+    }
+    
+    @ReactMethod
+    public void resetBrightness() {
+        // NO-OP on Android for now
+    }
+    
 }
