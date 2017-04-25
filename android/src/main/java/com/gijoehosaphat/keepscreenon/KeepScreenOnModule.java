@@ -60,7 +60,7 @@ public class KeepScreenOnModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void getBrightness(Callback callback) {
         // NO-OP on Android for now
-        callback.invoke(1)
+        callback.invoke(1);
     }
     
     @ReactMethod
