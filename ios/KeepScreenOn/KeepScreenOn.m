@@ -50,7 +50,9 @@ RCT_EXPORT_MODULE ();
 
 // restore device brightness
 RCT_EXPORT_METHOD (resetBrightness) {
-    [[UIScreen mainScreen] setBrightness:_originalBrightness];
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [[UIScreen mainScreen] setBrightness:_originalBrightness];
+    }];
 }
 
 RCT_EXPORT_METHOD (setKeepScreenOn:(BOOL)screenShouldBeKeptOn)
@@ -62,7 +64,9 @@ RCT_EXPORT_METHOD (setKeepScreenOn:(BOOL)screenShouldBeKeptOn)
 
 RCT_EXPORT_METHOD (setCustomBrightness:(CGFloat)brightness)
 {
-    [[UIScreen mainScreen] setBrightness:brightness];
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [[UIScreen mainScreen] setBrightness:brightness];
+    }];
 }
 
 RCT_EXPORT_METHOD (setOriginalBrightness:(CGFloat)brightness)
