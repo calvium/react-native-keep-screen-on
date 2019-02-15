@@ -20,6 +20,10 @@
 
 RCT_EXPORT_MODULE ();
 
++ (BOOL)requiresMainQueueSetup {
+    return NO;
+}
+
 - (id)init {
     self = [super init];
     
